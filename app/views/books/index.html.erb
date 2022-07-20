@@ -1,16 +1,26 @@
 <h1>Books</h1>
 
 <% @books.each do |book| %>
+<table>
+ <thead>
+  <tr>
+   <th>Title</th>
+   <th>Body</th>
+   <th colspan="3"></th>
+  </tr>
+ </thead>
 
- <p>title</p>
- <span><%= book.title %></span>
+ <tbody>
+  <tr>
+   <td><%= book.title %></td>
+   <td><%= book.body %></td>
+   <td><%= link_to "show",book_path(book.id) %></td>
+   <td><%= link_to "edit",edit_book_path(book.id) %></td>
+   <td><%= link_to "destroy",book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか?" %></td>
+  </tr>
+ </tbody>
 
- <p>body</p>
- <span><%= book.body %></span>
-
- <%= link_to "show",book_path(book.id) %>
- <%= link_to "edit",edit_book_path(book.id) %>
- <%= link_to "destroy",book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか?" %>
+</table>
 
 <% end %>
 
